@@ -26,8 +26,6 @@
 #define xPosition @"xPosition"
 #define yPosition @"yPosition"
 
-#define command @"command"
-
 @interface ViewController ()
 {
     NSMutableDictionary *toyRobot;

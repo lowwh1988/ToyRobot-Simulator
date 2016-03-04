@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "customUIGridView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController : UIViewController <UITextFieldDelegate>
 
@@ -14,6 +16,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *yValueTextField;
 @property (nonatomic, retain) IBOutlet UITextField *faceDirectionTextField;
 @property (nonatomic, retain) IBOutlet UIButton *textfieldBlockerButton;
+@property (nonatomic,retain)IBOutlet customUIGridView *gridView;
 
 - (IBAction)rotateLeftCommand;
 - (IBAction)rotateRightCommand;

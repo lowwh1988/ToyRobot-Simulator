@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94345B151C8930CC006DA453 /* customUIGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94345B141C8930CC006DA453 /* customUIGridView.m */; };
+		94345B171C893555006DA453 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94345B161C893555006DA453 /* QuartzCore.framework */; };
 		9493AB141C88039F00005F46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9493AB131C88039F00005F46 /* main.m */; };
 		9493AB171C88039F00005F46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9493AB161C88039F00005F46 /* AppDelegate.m */; };
 		9493AB1A1C88039F00005F46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9493AB191C88039F00005F46 /* ViewController.m */; };
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		94345B131C8930CC006DA453 /* customUIGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customUIGridView.h; sourceTree = "<group>"; };
+		94345B141C8930CC006DA453 /* customUIGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customUIGridView.m; sourceTree = "<group>"; };
+		94345B161C893555006DA453 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9493AB0F1C88039F00005F46 /* ToyRobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyRobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9493AB131C88039F00005F46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9493AB151C88039F00005F46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94345B171C893555006DA453 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +87,7 @@
 		9493AB061C88039F00005F46 = {
 			isa = PBXGroup;
 			children = (
+				94345B161C893555006DA453 /* QuartzCore.framework */,
 				9493AB111C88039F00005F46 /* ToyRobot */,
 				9493AB2B1C88039F00005F46 /* ToyRobotTests */,
 				9493AB361C88039F00005F46 /* ToyRobotUITests */,
@@ -103,6 +110,8 @@
 			children = (
 				9493AB151C88039F00005F46 /* AppDelegate.h */,
 				9493AB161C88039F00005F46 /* AppDelegate.m */,
+				94345B131C8930CC006DA453 /* customUIGridView.h */,
+				94345B141C8930CC006DA453 /* customUIGridView.m */,
 				9493AB181C88039F00005F46 /* ViewController.h */,
 				9493AB191C88039F00005F46 /* ViewController.m */,
 				9493AB1B1C88039F00005F46 /* Main.storyboard */,
@@ -273,6 +282,7 @@
 				9493AB1A1C88039F00005F46 /* ViewController.m in Sources */,
 				9493AB171C88039F00005F46 /* AppDelegate.m in Sources */,
 				9493AB141C88039F00005F46 /* main.m in Sources */,
+				94345B151C8930CC006DA453 /* customUIGridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

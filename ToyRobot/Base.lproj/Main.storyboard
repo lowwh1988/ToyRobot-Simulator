@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sx-eh-D31" userLabel="rotateLeftButton">
-                                <rect key="frame" x="275" y="162" width="50" height="45"/>
+                                <rect key="frame" x="275" y="100" width="50" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="qxk-9x-SiH"/>
                                     <constraint firstAttribute="height" constant="45" id="stX-qs-umj"/>
@@ -30,7 +31,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLX-AM-BJj" userLabel="moveButton">
-                                <rect key="frame" x="215" y="162" width="50" height="45"/>
+                                <rect key="frame" x="215" y="100" width="50" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="MOVE"/>
                                 <connections>
@@ -38,7 +39,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8f-Ds-Lot" userLabel="placeButton">
-                                <rect key="frame" x="155" y="162" width="50" height="45"/>
+                                <rect key="frame" x="155" y="100" width="50" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="PLACE"/>
                                 <connections>
@@ -46,7 +47,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Yu-5O-K3U" userLabel="rotateRightButton">
-                                <rect key="frame" x="335" y="162" width="50" height="45"/>
+                                <rect key="frame" x="335" y="100" width="50" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="RIGHT"/>
                                 <connections>
@@ -54,18 +55,26 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhG-EF-6j1" userLabel="reportButton">
-                                <rect key="frame" x="395" y="162" width="50" height="45"/>
+                                <rect key="frame" x="395" y="100" width="50" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="REPORT"/>
                                 <connections>
                                     <action selector="reportCommand" destination="BYZ-38-t0r" eventType="touchUpInside" id="fWc-Ga-ZSs"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgf-Ee-Dq7" userLabel="gridView" customClass="customUIGridView">
+                                <rect key="frame" x="150" y="163" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="2JX-FN-ca1"/>
+                                    <constraint firstAttribute="width" secondItem="Rgf-Ee-Dq7" secondAttribute="height" multiplier="1:1" id="4yv-z3-rpi"/>
+                                </constraints>
+                            </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vG-6E-ZyJ" userLabel="textfieldBlockerButton">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="X" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xxQ-IC-59h" userLabel="xValueTextField">
-                                <rect key="frame" x="155" y="117" width="80" height="30"/>
+                                <rect key="frame" x="155" y="55" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="76d-NA-ybE"/>
                                     <constraint firstAttribute="height" constant="30" id="w5M-Kf-0V6"/>
@@ -77,7 +86,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Y" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jPG-9d-Jgi" userLabel="yValueTextField">
-                                <rect key="frame" x="245" y="117" width="80" height="30"/>
+                                <rect key="frame" x="245" y="55" width="80" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                 <connections>
@@ -85,7 +94,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Direction" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jWf-ts-zcH" userLabel="faceDirectionTextField">
-                                <rect key="frame" x="335" y="117" width="80" height="30"/>
+                                <rect key="frame" x="335" y="55" width="80" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
@@ -96,7 +105,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1vG-6E-ZyJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2OB-Z5-VCn"/>
-                            <constraint firstItem="2Sx-eh-D31" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="142" id="3RT-kS-JAw"/>
+                            <constraint firstItem="2Sx-eh-D31" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="3RT-kS-JAw"/>
                             <constraint firstItem="jPG-9d-Jgi" firstAttribute="centerY" secondItem="xxQ-IC-59h" secondAttribute="centerY" id="4g5-Fq-IfO"/>
                             <constraint firstItem="jWf-ts-zcH" firstAttribute="leading" secondItem="jPG-9d-Jgi" secondAttribute="trailing" constant="10" id="4iG-Hl-xIs"/>
                             <constraint firstItem="5Yu-5O-K3U" firstAttribute="height" secondItem="2Sx-eh-D31" secondAttribute="height" id="5CH-ce-d4I"/>
@@ -110,6 +119,7 @@
                             <constraint firstItem="xxQ-IC-59h" firstAttribute="leading" secondItem="j8f-Ds-Lot" secondAttribute="leading" id="QFL-8u-9HP"/>
                             <constraint firstItem="bLX-AM-BJj" firstAttribute="width" secondItem="2Sx-eh-D31" secondAttribute="width" id="SaR-MJ-1eW"/>
                             <constraint firstItem="dhG-EF-6j1" firstAttribute="height" secondItem="5Yu-5O-K3U" secondAttribute="height" id="ShI-7q-bJV"/>
+                            <constraint firstItem="Rgf-Ee-Dq7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TEN-qr-ntQ"/>
                             <constraint firstItem="jPG-9d-Jgi" firstAttribute="width" secondItem="xxQ-IC-59h" secondAttribute="width" id="TrM-xa-bFS"/>
                             <constraint firstItem="jWf-ts-zcH" firstAttribute="leading" secondItem="jPG-9d-Jgi" secondAttribute="trailing" constant="10" id="UW7-2a-ovL"/>
                             <constraint firstItem="bLX-AM-BJj" firstAttribute="leading" secondItem="j8f-Ds-Lot" secondAttribute="trailing" constant="10" id="Wal-Ye-kmc"/>
@@ -119,6 +129,7 @@
                             <constraint firstItem="dhG-EF-6j1" firstAttribute="width" secondItem="5Yu-5O-K3U" secondAttribute="width" id="cLF-mw-LDd"/>
                             <constraint firstItem="2Sx-eh-D31" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ehC-JZ-tQk"/>
                             <constraint firstItem="j8f-Ds-Lot" firstAttribute="height" secondItem="bLX-AM-BJj" secondAttribute="height" id="fXE-Hq-bgU"/>
+                            <constraint firstItem="Rgf-Ee-Dq7" firstAttribute="top" secondItem="dhG-EF-6j1" secondAttribute="bottom" constant="18" id="l8y-EQ-QRW"/>
                             <constraint firstItem="j8f-Ds-Lot" firstAttribute="top" secondItem="xxQ-IC-59h" secondAttribute="bottom" constant="15" id="niX-WN-fAY"/>
                             <constraint firstItem="bLX-AM-BJj" firstAttribute="centerY" secondItem="2Sx-eh-D31" secondAttribute="centerY" id="oab-5T-H6e"/>
                             <constraint firstItem="2Sx-eh-D31" firstAttribute="leading" secondItem="bLX-AM-BJj" secondAttribute="trailing" constant="10" id="pfw-wv-Qmo"/>
@@ -137,6 +148,7 @@
                     </view>
                     <connections>
                         <outlet property="faceDirectionTextField" destination="jWf-ts-zcH" id="jTI-hK-SmE"/>
+                        <outlet property="gridView" destination="Rgf-Ee-Dq7" id="Dcl-41-cUC"/>
                         <outlet property="textfieldBlockerButton" destination="1vG-6E-ZyJ" id="Kwo-RW-QeW"/>
                         <outlet property="xValueTextField" destination="xxQ-IC-59h" id="g9p-90-7Yv"/>
                         <outlet property="yValueTextField" destination="jPG-9d-Jgi" id="3Wq-sj-WEc"/>

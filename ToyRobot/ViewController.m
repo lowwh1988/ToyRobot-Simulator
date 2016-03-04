@@ -26,6 +26,8 @@
 #define xPosition @"xPosition"
 #define yPosition @"yPosition"
 
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+
 @interface ViewController ()
 {
     NSMutableDictionary *toyRobot;
@@ -39,6 +41,7 @@
 @synthesize yValueTextField;
 @synthesize faceDirectionTextField;
 @synthesize textfieldBlockerButton;
+@synthesize gridView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,6 +51,10 @@
     [textfieldBlockerButton addTarget:self action:@selector(textFieldBlockerButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
     directionArray = [[NSArray alloc] initWithObjects:faceNorthDirection,faceWestDirection,faceSouthDirection,faceEastDirection, nil];
+    
+    gridView.numberOfRows = 5;
+    gridView.numberOfColumns = 5;
+    [gridView setNeedsDisplay];
 }
 
 #pragma mark - ToyRobot Command
@@ -87,11 +94,28 @@
         if(toyRobot == nil)
         {
             toyRobot = [[NSMutableDictionary alloc] init];
+            gridView.toyRobot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+            [gridView.toyRobot setBackgroundColor:[UIColor redColor]];
+            UIBezierPath* trianglePath = [UIBezierPath bezierPath];
+            [trianglePath moveToPoint:CGPointMake(0, gridView.toyRobot.frame.size.height)];
+            [trianglePath addLineToPoint:CGPointMake(gridView.toyRobot.frame.size.width/2,0)];
+            [trianglePath addLineToPoint:CGPointMake(gridView.toyRobot.frame.size.width, gridView.toyRobot.frame.size.height)];
+            [trianglePath closePath];
+            
+            CAShapeLayer *triangleMaskLayer = [CAShapeLayer layer];
+            [triangleMaskLayer setPath:trianglePath.CGPath];
+            
+            gridView.toyRobot.layer.mask = triangleMaskLayer;
+            
+            [gridView addSubview:gridView.toyRobot];
         }
         
         [toyRobot setObject:[NSNumber numberWithInt:[xValueTextField.text intValue]] forKey:xPosition];
         [toyRobot setObject:[NSNumber numberWithInt:[yValueTextField.text intValue]] forKey:yPosition];
         [toyRobot setObject:[faceDirectionTextField.text uppercaseString] forKey:faceDirection];
+        
+        [gridView.toyRobot setFrame:CGRectMake([xValueTextField.text intValue]*60, [self mapYValue:[yValueTextField.text intValue]]*60, 60, 60)];
+        [gridView.toyRobot setTransform:[self rotateToyRobotWithFaceDirection:[faceDirectionTextField.text uppercaseString]]];
     }
     else
     {
@@ -146,6 +170,8 @@
         {
             [toyRobot setObject:[NSNumber numberWithInt:[[toyRobot objectForKey:xPosition] intValue]+moveXByValue] forKey:xPosition];
             [toyRobot setObject:[NSNumber numberWithInt:[[toyRobot objectForKey:yPosition] intValue]+moveYByValue] forKey:yPosition];
+            
+            [gridView.toyRobot setFrame:CGRectMake([[toyRobot objectForKey:xPosition] intValue]*60, [self mapYValue:[[toyRobot objectForKey:yPosition] intValue]]*60, 60, 60)];
         }
         else
         {
@@ -178,6 +204,8 @@
         {
             [toyRobot setObject:faceNorthDirection forKey:faceDirection];
         }
+        
+        [gridView.toyRobot setTransform:[self rotateToyRobotWithFaceDirection:[toyRobot objectForKey:faceDirection]]];
     }
     else
     {
@@ -205,6 +233,8 @@
         {
             [toyRobot setObject:faceSouthDirection forKey:faceDirection];
         }
+        
+        [gridView.toyRobot setTransform:[self rotateToyRobotWithFaceDirection:[toyRobot objectForKey:faceDirection]]];
     }
     else
     {
@@ -249,6 +279,47 @@
     [faceDirectionTextField resignFirstResponder];
 }
 
+- (int)mapYValue:(int)yValue
+{
+    int y = 4;
+    if(yValue==1)
+    {
+        y = 3;
+    }
+    else if(yValue==2)
+    {
+        y = 2;
+    }
+    else if(yValue==3)
+    {
+        y = 1;
+    }
+    else if(yValue==4)
+    {
+        y = 0;
+    }
+    return y;
+}
+
+- (CGAffineTransform)rotateToyRobotWithFaceDirection:(NSString *)fDirection
+{
+    CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, DEGREES_TO_RADIANS(0));
+
+    if([fDirection isEqualToString:faceWestDirection])
+    {
+        transform = CGAffineTransformRotate(CGAffineTransformIdentity, DEGREES_TO_RADIANS(270));
+    }
+    else if([fDirection isEqualToString:faceSouthDirection])
+    {
+        transform = CGAffineTransformRotate(CGAffineTransformIdentity, DEGREES_TO_RADIANS(180));
+    }
+    else if([fDirection isEqualToString:faceEastDirection])
+    {
+        transform = CGAffineTransformRotate(CGAffineTransformIdentity, DEGREES_TO_RADIANS(90));
+    }
+    
+    return transform;
+}
 -(void)showMessageWithTitle:(NSString *)title andMessage:(NSString *)message andCancelButton:(NSString *)cancel
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:cancel otherButtonTitles:nil, nil];

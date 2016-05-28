@@ -252,7 +252,6 @@
     {
         [self showMessageWithTitle:@"Invalid Command" andMessage:@"" andCancelButton:@"OK"];
     }
-    
 }
 
 #pragma mark -
